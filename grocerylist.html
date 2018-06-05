@@ -1,0 +1,65 @@
+<html>
+<head>
+    <title>Pick Your Groceries!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.0/css/mdb.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="container-fluid d-flex flex-row justify-content-center">
+        <h3 class="pt-2">Shopping Lists</h3>
+    </header>
+    <div>
+
+        <form id="createStoreForm">
+            <select name="selectStore">
+                <option value="Whole Foods" id="btnWhole">Whole Foods</option>
+                <option value="HEB" id="btnHeb">HEB</option>
+                <option value="Fiesta" id="btnFiesta">Fiesta</option>
+            </select>
+            <input type="submit" value="create"/>
+        </form>
+    </div>
+    <div id="viewWhole" class="d-flex flex-row font-italic pt-2 justify-content-center black-text">
+    </div>
+
+<script>
+
+    var storeNumber = 0
+    function createItem(store_input_id, items_container_id){
+        var input = document.getElementById(store_input_id)
+        var itemsContainer = document.getElementById(items_container_id)
+        itemsContainer.innerHTML += `
+        <li>${input.value}</li>
+        `
+
+    }
+    var storeNumber = 0
+    function removeItem(store_input_id, items_container_id){
+        var input = document.getElementById(store_input_id)
+        var itemsContainer = document.getElementById(items_container_id)
+        itemsContainer.innerHTML -=`
+        <li>${input.value}</li>
+        `
+
+    }
+</script>
+<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDSbpsAdd176_rQL6AQ6vf8N8-H_caHmAU",
+    authDomain: "grocery-list-cd680.firebaseapp.com",
+    databaseURL: "https://grocery-list-cd680.firebaseio.com",
+    projectId: "grocery-list-cd680",
+    storageBucket: "grocery-list-cd680.appspot.com",
+    messagingSenderId: "498764968487"
+  };
+  firebase.initializeApp(config);
+
+  let database = firebase.database();
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="grocery.js"></script>
+</html>
